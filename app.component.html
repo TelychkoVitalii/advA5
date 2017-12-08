@@ -1,0 +1,45 @@
+<form [formGroup]="testForm">
+  <label for="label">Test</label>
+  <input id="label" formControlName="formControl" [disableControl]="disable">
+  <!--<textareaExpanded formControlName="control" (click)="onSend($event)"></textareaExpanded>-->
+  <!--<p>Control Value:</p>-->
+  <button (click)="disable = true">Disable</button>
+  <button (click)="disable = false">Enable</button>
+  <button (click)="testForm.reset()">Reset</button>
+  |||||||||||||||
+  <label for="comparefn">CompareFn</label>
+  <select id='comparefn' formControlName="control" [compareWith]="compareFn">
+    <option [ngValue]="option" *ngFor="let option of options">
+      {{option.label}}
+    </option>
+  </select>
+  |||||||||||||||
+  <label for="placeholder">Placeholder</label>
+  <select id='placeholder' formControlName="category">
+    <option [ngValue]="null">Select Category</option>
+    <option *ngFor="let state of states"
+            [ngValue]="state">{{state.name}}</option>
+  </select>
+</form>
+------------------------------------------------------------------------------------------------
+<div *myNgIf="!show">{{ person.name }}</div>
+<br>
+<button (click)="show = !show">Click</button>
+<br>
+------------------------------------------------------------------------------------------------
+<form [formGroup]="form" (submit)="submit(form.value)">
+  <div *ngFor="let skill of skills.controls; let i=index">
+    <input type="checkbox" [formControl]="skill"/>{{user.skills[i].name}}
+  </div>
+  <button type="submit">Submit</button>
+</form>
+<httpClient></httpClient>
+<button (click)="onCreate()">Click</button>
+<span #btn></span>
+<!-- custom directive -->
+<ng-template #tp1 isAdmin>Content 1</ng-template>
+<ng-template #tp2>Content 2</ng-template>
+<div #container></div>
+<!-- Dynamic Component -->
+<h1>Hello {{ name }}</h1>
+<ng-template #dynamic></ng-template>
